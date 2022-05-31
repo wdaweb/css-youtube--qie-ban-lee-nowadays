@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <title>youtube</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body{
+            background: rgba(0, 0, 0, 0.1);
+        }
+        body::-webkit-scrollbar {
+            width: 10px;
+            
+
+        }
+
+        ::-webkit-scrollbar-track-piece {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid slategrey;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: transparent;
+        }
+
+        i {
+            color: white;
+            font-size: 20px;
+        }
+
+        .wrap {
+            width: 100vw;
+            height: 100vh;
+
+
+        }
+
+        .ham {
+            width: 50px;
+            height: 60px;
+            display: inline-block;
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .ham1 {
+            width: 20px;
+            height: 2px;
+            background: #fff;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ham1::before {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background: #fff;
+
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ham1::after {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background: #fff;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+
+        #banner {
+            width: 99.5%;
+            height: 60px;
+            background: rgba(0, 0, 0, 1);
+            opacity: 0.9;
+            position: fixed;
+
+
+        }
+
+        #banner .logo {
+            width: 150px;
+            height: 60px;
+            display: inline-block;
+            margin-left: 30px;
+            margin-right: 25%;
+        }
+
+        #banner .logo img {
+            width: 150px;
+            height: 60px;
+            opacity: 0.9;
+        }
+
+        #country {
+            color: #f00;
+            width: 20px;
+            height: 20px;
+        }
+
+        #banner .search {
+            width: 620px;
+            height: 40px;
+            font-size: 0;
+            position: absolute;
+            top: 10px;
+            display: inline-block;
+
+
+            /* border: 1px solid white; */
+
+        }
+
+        #banner #search_text {
+            width: 500px;
+            height: 35px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            list-style: none;
+            border: 1px solid #ccc;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 18px;
+        }
+
+        #banner #search_icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 30px;
+            vertical-align: top;
+        }
+
+        #banner .microphone {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            background: #000;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+
+        }
+
+        #banner .banner_right {
+            width: 200px;
+            height: 50px;
+            float: right;
+            /* border: 1px solid #ccc; */
+            margin-top: 5px;
+            margin-right: 5px;
+
+        }
+
+        #banner .application {
+            display: inline-block;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            /* border: 1px solid #ccc; */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 45px;
+            font-size: 2px;
+            color: #fff;
+            top: 10px;
+
+        }
+
+        #banner i {
+            font-size: 20px;
+
+        }
+
+        #banner .setting {
+            display: inline-block;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 40px;
+            color: #fff;
+            top: 10px;
+
+        }
+
+        #banner .login {
+            display: inline-block;
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            border: 1px solid #0072E3;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 100px;
+            color: #0072E3;
+            top: 10px;
+        }
+
+        #video_left {
+            width: 250px;
+            margin-top: 60px;
+            height: 980px;
+            background: rgba(0, 0, 0, 1);
+            opacity: 0.9;
+            position: fixed;
+            list-style: none;
+
+
+        }
+        #video_left a:hover {
+            background: #333;
+        }
+        #video_left ul {
+            margin-right: 10px;
+        }
+
+        #video_left ul li {
+            margin-right: 10px;
+            height: 40px;
+        }
+
+        #video_left ul li a {
+            height: 100%;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+
+            padding-top: 10px;
+        }
+
+        #video_left ul li i {
+            margin-left: 30px;
+
+            height: 20px;
+            width: 20px;
+        }
+
+        #video_left ul li span {
+            display: inline-block;
+            margin-left: 30px;
+            height: 20px;
+            vertical-align: bottom;
+
+        }
+
+        hr {
+            border: 0;
+            background-color: #333;
+            height: 1px;
+        }
+
+        .vlp {
+            margin-left: 30px;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        #video_left .login {
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            border: 1px solid #0072E3;
+            text-align: center;
+            line-height: 40px;
+            margin: 30px 0 20px 30px;
+            color: #0072E3;
+            top: 10px;
+        }
+
+        .Featured {
+            color: #999;
+        }
+
+        #video_left ul li img {
+            margin-left: 30px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        #video_right {
+            width: 1670px;
+            float: right;
+            height: 1000px;
+            margin-top: 60px;
+            margin-left: 200px;
+            background: rgba(0, 0, 0, 0.9);
+
+        }
+
+        #video_right .right_top {
+            width: 1670px;
+            height: 60px;
+            color: #fff;
+            text-align: center;
+            background: rgba(0, 0, 0, 1);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            
+
+        }
+
+        #video_right .right_top a {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            background: rgba(50, 50, 50, 0.5);
+            padding: 10px 10px;
+            border-radius: 40px;
+            line-height: 30px;
+        }
+        #video_right #right_content{
+            width: 1670px;
+            height: 920px;
+            
+        }
+        #video_right #right_content iframe{
+            width: 1670px;
+            height: 920px;
+            border: none;
+            margin-top: 10px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="banner">
+            <div class="ham">
+                <div class="ham1"></div>
+            </div>
+            <div class="logo">
+                <a href="/youtube.html">
+                    <img src="./images/1603067053573332967.png" alt="Youtube首頁" title="Youtube首頁">
+
+                </a>
+
+            </div>
+            <div class="search">
+                <input type="text" id="search_text" value="搜尋">
+                <button id="search_icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="microphone"><i class="fa-solid fa-microphone"></i></div>
+            </div>
+
+            <div class="banner_right">
+                <div class="application">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="setting">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="login">
+                    <i class="fa-solid fa-user-large"></i>
+                    <span>登入</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="video_left">
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-house"></i><span>首頁</span> </a></li>
+                <li><a href="#"><i class="fa-solid fa-compass"></i><span>探索</span> </a></li>
+                <li><a href="#"><i class="fa-solid fa-shirt"></i><span>Shorts</span> </a></li>
+                <li><a href="#"><i class="fa-solid fa-radio"></i><span>訂閱內容</span> </a></li>
+                <li><a href="#"><i class="fa-solid fa-photo-film"></i><span>媒體庫</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span>觀看紀錄</span></a></li>
+                <hr>
+                <li>
+                    <p class="vlp">登入帳戶即可對影片表示喜歡、發布留言及訂閱頻道。</p>
+                </li>
+                <div class="login">
+                    <i class="fa-solid fa-user-large"></i>
+                    <span>登入</span>
+                </div>
+                <hr>
+                <li>
+                    <p class="vlp Featured">YOUTUBE&nbsp; 精選</p>
+                </li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/WKaMD-uxWVVdU9PMZ5ADrIkoSKFRVfQBZ50HSlPBKFZBLcDMlZZiquY7piSBsCJPuzp_OAAs=s88-c-k-c0x00ffffff-no-rj"
+                            alt="音樂" title="音樂"><span>音樂</span> </a></li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/s90XOhqTFcRb7x_hMUAhiwVzTWIbVkx704KGglbh6yx3adG2xwIfvWhc9riAkjft1dhbTBIHQA4=s88-c-k-c0x00ffffff-no-rj"
+                            alt="體育" title="體育"><span>體育</span></a></li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/ZCxc3HskWgTU3CUB03_ITXKIYzwp9EXwx0VQOCyl6asJV6Fm_sldl9Bs5jblVa2xS33k485i=s88-c-k-c0x00ffffff-no-rj"
+                            alt="遊戲" title="遊戲"><span>遊戲</span></a></li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/6lo97rUTO7xhIBXZqLiaW2kA_eMBIEmqc27EqlKLyE4nAY-yzcKBG0Hs0YdUka3gJ629HcwgyzQ=s88-c-k-c0x00ffffff-no-rj"
+                            alt="電影" title="電影"><span>電影</span></a></li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/K9BzDvWNMKeg31sN74H_WGtYXsSBWNSF0OICeXPy4XGKksJt8RxFqgO2xTL1CPE4m4NfXgkkyA=s88-c-k-c0x00ffffff-no-rj"
+                            alt="新聞" title="新聞"><span>新聞</span></a></li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/8D6JlsnvwDZFMdcbjqVji82kggP3aXXbO-yBD0RFrKlp4G1zNt9wcqcVTSPnAI8GuUAbDYQwsg=s88-c-k-c0x00ffffff-no-rj"
+                            alt="直播" title="直播"><span>直播</span></a></li>
+                <li><a href="#"><img
+                            src="https://yt3.ggpht.com/oEoynimETDMZdG4lHkqp8aoTJplqRsUyMWp4ikKS1ti2WQx5oo-e1txQAsL9L7ZEibOvb__QXg=s88-c-k-c0x00ffffff-no-rj"
+                            alt="360度影片" title="360度影片"><span>360度影片</span></a>
+                </li>
+                <hr>
+                <li><a href="#"><i class="fa-solid fa-plus"></i><span>瀏覽頻道</span> </a></li>
+                <hr>
+                <li>
+                    <p class="vlp Featured">更多YOUTUBE功能</p>
+                </li>
+                <li><a href="#"> <i class="fa-brands fa-youtube"></i><span>Youtube Premium</span> </a></li>
+                <li><a href="#"> <i class="fa-solid fa-tower-broadcast"></i><span>直播</span> </a></li>
+            </ul>
+        </div>
+ 
+        <div id="video_right">
+            
+            <div class="right_top">
+                <br>
+                <a href="#">全部</a>
+                <a href="#">直播中</a>
+                <a href="#">動畫</a>
+                <a href="#">旅遊勝地</a>
+                <a href="#">動作冒險遊戲</a>
+                <a href="#">烹飪節目</a>
+                <a href="#">音樂</a>
+                <a href="#">自然</a>
+                <a href="#">寵物</a>
+                <a href="#">烹飪</a>
+                <a href="#">最新上傳</a>
+                <br>
+            </div>
+            <div id="right_content">
+                <iframe src="./video.html" name="iframe" ></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
